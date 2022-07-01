@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+
+{%block content%}
+    <h3 class="text-center mb-3">Polls Questions</h3>
+
+    {% if latest_question_list%}
+
+    {% for question in latest_question_list%}
+    <div class="card mb-3">
+        <div class="card-body">
+            <p class="lead">
+                {{question.question_text}} <br>
+                <a href="{% url 'pollsapp:detail' question.id %}" class="btn btn-primary btn-sm">Vote Now</a>
+                <a href="{% url 'pollsapp:results' question.id %}" class="btn btn-secondry btn-sm">Results</a>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+
+    {%else%}
+
+    <h2>No Question Available</h2>
+    
+    {% endif %}
+
+
+
+{%endblock %}
